@@ -1,0 +1,27 @@
+{
+  "name": "yjs-go-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --experimental-strip-types --no-warnings=ExperimentalWarning main.ts",
+    "proto": "proto-loader-gen-types --longs=Number --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=proto/ ../proto/*.proto"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.13.4",
+    "@grpc/proto-loader": "^0.7.15",
+    "@y/websocket-server": "^0.1.1",
+    "grpc-health-check": "^2.0.2",
+    "hook-std": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.27"
+  },
+  "engines" : { 
+    "node" : ">=22.6.0"
+  },
+  "engineStrict" : true
+}

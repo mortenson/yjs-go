@@ -1,0 +1,62 @@
+syntax = "proto3";
+package yjs;
+
+option go_package = "./proto";
+
+message TestRequest {
+    string message = 1;
+}
+
+message TestResponse {
+    string message = 1;
+}
+
+message Empty { }
+
+message SyncV1Request {
+    string docname = 1;
+    string origin = 2;
+}
+
+message SyncV1Response {
+    bytes message = 1;
+}
+
+message WebsocketMessageRequest {
+    string docname = 1;
+    bytes message = 2;
+    string origin = 3;
+}
+
+message WebsocketMessageResponse {
+    optional bytes message = 1;
+}
+
+message SyncRequest {
+    string docname = 1;
+    string origin = 2;
+}
+
+message SyncResponse {
+    bytes doc_message = 1;
+    bytes awareness_message = 2;
+}
+
+message RemoveClientRequest {
+    string docname = 1;
+    repeated string origins = 2;
+}
+
+service YJS {
+    rpc Test(TestRequest) returns (TestResponse);
+
+    rpc Close(Empty) returns (Empty);
+
+    rpc WebsocketMessage(WebsocketMessageRequest) returns (WebsocketMessageResponse);
+
+    rpc SyncV1(SyncV1Request) returns (SyncV1Response);
+
+    rpc Sync(SyncRequest) returns (SyncResponse);
+
+    rpc RemoveClient(RemoveClientRequest) returns (Empty);
+}
